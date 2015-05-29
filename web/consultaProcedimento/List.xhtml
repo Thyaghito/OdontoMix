@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListConsultaProcedimentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListConsultaProcedimentoEmpty}" rendered="#{consultaProcedimentoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{consultaProcedimentoController.items.rowCount > 0}">
+                    <h:outputText value="#{consultaProcedimentoController.pagination.pageFirstItem + 1}..#{consultaProcedimentoController.pagination.pageLastItem + 1}/#{consultaProcedimentoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{consultaProcedimentoController.previous}" value="#{bundle.Previous} #{consultaProcedimentoController.pagination.pageSize}" rendered="#{consultaProcedimentoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{consultaProcedimentoController.next}" value="#{bundle.Next} #{consultaProcedimentoController.pagination.pageSize}" rendered="#{consultaProcedimentoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{consultaProcedimentoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaProcedimentoTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaProcedimentoTitle_idConvenioProcedimento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idConvenioProcedimento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaProcedimentoTitle_idConsulta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idConsulta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{consultaProcedimentoController.prepareView}" value="#{bundle.ListConsultaProcedimentoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{consultaProcedimentoController.prepareEdit}" value="#{bundle.ListConsultaProcedimentoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{consultaProcedimentoController.destroy}" value="#{bundle.ListConsultaProcedimentoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{consultaProcedimentoController.prepareCreate}" value="#{bundle.ListConsultaProcedimentoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListConsultaProcedimentoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

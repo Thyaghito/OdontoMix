@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAnamneseTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAnamneseLabel_idAnamnese}"/>
+                    <h:outputText value="#{anamneseController.selected.idAnamnese}" title="#{bundle.ViewAnamneseTitle_idAnamnese}"/>
+                    <h:outputText value="#{bundle.ViewAnamneseLabel_gengiva}"/>
+                    <h:outputText value="#{anamneseController.selected.gengiva}" title="#{bundle.ViewAnamneseTitle_gengiva}"/>
+                    <h:outputText value="#{bundle.ViewAnamneseLabel_dentesSensiveis}"/>
+                    <h:outputText value="#{anamneseController.selected.dentesSensiveis}" title="#{bundle.ViewAnamneseTitle_dentesSensiveis}"/>
+                    <h:outputText value="#{bundle.ViewAnamneseLabel_retencaoalimentos}"/>
+                    <h:outputText value="#{anamneseController.selected.retencaoalimentos}" title="#{bundle.ViewAnamneseTitle_retencaoalimentos}"/>
+                    <h:outputText value="#{bundle.ViewAnamneseLabel_alergiaMedicamento}"/>
+                    <h:outputText value="#{anamneseController.selected.alergiaMedicamento}" title="#{bundle.ViewAnamneseTitle_alergiaMedicamento}"/>
+                    <h:outputText value="#{bundle.ViewAnamneseLabel_alergiaAlimento}"/>
+                    <h:outputText value="#{anamneseController.selected.alergiaAlimento}" title="#{bundle.ViewAnamneseTitle_alergiaAlimento}"/>
+                    <h:outputText value="#{bundle.ViewAnamneseLabel_mordeLapis}"/>
+                    <h:outputText value="#{anamneseController.selected.mordeLapis}" title="#{bundle.ViewAnamneseTitle_mordeLapis}"/>
+                    <h:outputText value="#{bundle.ViewAnamneseLabel_roiUnhas}"/>
+                    <h:outputText value="#{anamneseController.selected.roiUnhas}" title="#{bundle.ViewAnamneseTitle_roiUnhas}"/>
+                    <h:outputText value="#{bundle.ViewAnamneseLabel_outrosVicios}"/>
+                    <h:outputText value="#{anamneseController.selected.outrosVicios}" title="#{bundle.ViewAnamneseTitle_outrosVicios}"/>
+                    <h:outputText value="#{bundle.ViewAnamneseLabel_gravida}"/>
+                    <h:outputText value="#{anamneseController.selected.gravida}" title="#{bundle.ViewAnamneseTitle_gravida}"/>
+                    <h:outputText value="#{bundle.ViewAnamneseLabel_doenca}"/>
+                    <h:outputText value="#{anamneseController.selected.doenca}" title="#{bundle.ViewAnamneseTitle_doenca}"/>
+                    <h:outputText value="#{bundle.ViewAnamneseLabel_observacoes}"/>
+                    <h:outputText value="#{anamneseController.selected.observacoes}" title="#{bundle.ViewAnamneseTitle_observacoes}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{anamneseController.destroyAndView}" value="#{bundle.ViewAnamneseDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAnamneseEditLink}"/>
+                <br />
+                <h:commandLink action="#{anamneseController.prepareCreate}" value="#{bundle.ViewAnamneseCreateLink}" />
+                <br />
+                <h:commandLink action="#{anamneseController.prepareList}" value="#{bundle.ViewAnamneseShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAnamneseIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

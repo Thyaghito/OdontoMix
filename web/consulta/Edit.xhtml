@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditConsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditConsultaLabel_idConsulta}" for="idConsulta" />
+                    <h:inputText id="idConsulta" value="#{consultaController.selected.idConsulta}" title="#{bundle.EditConsultaTitle_idConsulta}" required="true" requiredMessage="#{bundle.EditConsultaRequiredMessage_idConsulta}"/>
+                    <h:outputLabel value="#{bundle.EditConsultaLabel_idTratamento}" for="idTratamento" />
+                    <h:inputText id="idTratamento" value="#{consultaController.selected.idTratamento}" title="#{bundle.EditConsultaTitle_idTratamento}" required="true" requiredMessage="#{bundle.EditConsultaRequiredMessage_idTratamento}"/>
+                    <h:outputLabel value="#{bundle.EditConsultaLabel_data}" for="data" />
+                    <h:inputText id="data" value="#{consultaController.selected.data}" title="#{bundle.EditConsultaTitle_data}" required="true" requiredMessage="#{bundle.EditConsultaRequiredMessage_data}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditConsultaLabel_hora}" for="hora" />
+                    <h:inputText id="hora" value="#{consultaController.selected.hora}" title="#{bundle.EditConsultaTitle_hora}" required="true" requiredMessage="#{bundle.EditConsultaRequiredMessage_hora}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditConsultaLabel_diagnostico}" for="diagnostico" />
+                    <h:inputText id="diagnostico" value="#{consultaController.selected.diagnostico}" title="#{bundle.EditConsultaTitle_diagnostico}" />
+                    <h:outputLabel value="#{bundle.EditConsultaLabel_observacao}" for="observacao" />
+                    <h:inputText id="observacao" value="#{consultaController.selected.observacao}" title="#{bundle.EditConsultaTitle_observacao}" />
+                    <h:outputLabel value="#{bundle.EditConsultaLabel_idStatus}" for="idStatus" />
+                    <h:selectOneMenu id="idStatus" value="#{consultaController.selected.idStatus}" title="#{bundle.EditConsultaTitle_idStatus}" required="true" requiredMessage="#{bundle.EditConsultaRequiredMessage_idStatus}">
+                        <f:selectItems value="#{statusController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditConsultaLabel_idPaciente}" for="idPaciente" />
+                    <h:selectOneMenu id="idPaciente" value="#{consultaController.selected.idPaciente}" title="#{bundle.EditConsultaTitle_idPaciente}" required="true" requiredMessage="#{bundle.EditConsultaRequiredMessage_idPaciente}">
+                        <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditConsultaLabel_idUsuario}" for="idUsuario" />
+                    <h:selectOneMenu id="idUsuario" value="#{consultaController.selected.idUsuario}" title="#{bundle.EditConsultaTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditConsultaRequiredMessage_idUsuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{consultaController.update}" value="#{bundle.EditConsultaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditConsultaViewLink}"/>
+                <br />
+                <h:commandLink action="#{consultaController.prepareList}" value="#{bundle.EditConsultaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditConsultaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

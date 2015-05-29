@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>MoviesSystem - <ui:insert name="title"></ui:insert></title>       
+        
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/bootstrap-theme.css" />
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/styles.css" />
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/jquery-ui.min.css" />
+        
+        <script type="text/javascript" src="#{request.contextPath}/js/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/js/main.js"></script>
+        
+    </h:head>
+
+    <h:body>
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#{request.contextPath}/faces/consulta/List.xhtml">
+                        <h:graphicImage height="21" url="/img/logo.png" alt="MoviesSystem" />
+                    </a>
+                    <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button">					
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <h:form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <h:commandLink action="#{usuarioController.editUserSystem()}"><span class='glyphicon glyphicon-user'></span> #{loginController.userSystem.nome}</h:commandLink>                             
+                        </li>
+                        <li>                            
+                            <h:commandLink action="#{loginController.logout()}"><span class="glyphicon glyphicon-log-out"></span>#{bundle.exit}</h:commandLink>
+                        </li>
+                    </ul>
+                    </h:form>   
+                </div>	
+            </div>
+        </nav>
+        
+        <div class="main">
+            <div class="main-menu col-md-2"> 
+                <h:link outcome="/convenio/List" class="list-group-item"><span class='glyphicon glyphicon-film'></span> #{bundle.convenio}</h:link>
+                <h:link outcome="/procedimento/List" class="list-group-item"><span class='glyphicon glyphicon-star'></span> #{bundle.procedimento}</h:link>
+                <h:link outcome="/consulta/List" class="list-group-item"><span class='glyphicon glyphicon-tag'></span> #{bundle.consulta}</h:link>
+                <h:link outcome="/paciente/List" class="list-group-item"><span class='glyphicon glyphicon-star-empty'></span> #{bundle.paciente}</h:link>
+                <h:link outcome="/usuario/List" class="list-group-item" rendered="#{loginController.userSystem.idCargo.idCargo == 2}" ><span class='glyphicon glyphicon-user'></span> #{bundle.usuario}</h:link>   
+            </div>
+            <div class="main-content col-md-10">
+                <ui:insert name="body"></ui:insert>
+            </div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<div class="footer">
+            <span class="copyright">© Copyright 2015, OdontoMixSystem.</span>
+            <a href="http://google.com.br" target="_blank" class="developedby"><small>developed by</small> Thyago Dorea</a>
+	</div>
+    </h:body>
+
+</html>

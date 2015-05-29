@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewConsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewConsultaLabel_idConsulta}"/>
+                    <h:outputText value="#{consultaController.selected.idConsulta}" title="#{bundle.ViewConsultaTitle_idConsulta}"/>
+                    <h:outputText value="#{bundle.ViewConsultaLabel_idTratamento}"/>
+                    <h:outputText value="#{consultaController.selected.idTratamento}" title="#{bundle.ViewConsultaTitle_idTratamento}"/>
+                    <h:outputText value="#{bundle.ViewConsultaLabel_data}"/>
+                    <h:outputText value="#{consultaController.selected.data}" title="#{bundle.ViewConsultaTitle_data}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewConsultaLabel_hora}"/>
+                    <h:outputText value="#{consultaController.selected.hora}" title="#{bundle.ViewConsultaTitle_hora}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewConsultaLabel_diagnostico}"/>
+                    <h:outputText value="#{consultaController.selected.diagnostico}" title="#{bundle.ViewConsultaTitle_diagnostico}"/>
+                    <h:outputText value="#{bundle.ViewConsultaLabel_observacao}"/>
+                    <h:outputText value="#{consultaController.selected.observacao}" title="#{bundle.ViewConsultaTitle_observacao}"/>
+                    <h:outputText value="#{bundle.ViewConsultaLabel_idStatus}"/>
+                    <h:outputText value="#{consultaController.selected.idStatus}" title="#{bundle.ViewConsultaTitle_idStatus}"/>
+                    <h:outputText value="#{bundle.ViewConsultaLabel_idPaciente}"/>
+                    <h:outputText value="#{consultaController.selected.idPaciente}" title="#{bundle.ViewConsultaTitle_idPaciente}"/>
+                    <h:outputText value="#{bundle.ViewConsultaLabel_idUsuario}"/>
+                    <h:outputText value="#{consultaController.selected.idUsuario}" title="#{bundle.ViewConsultaTitle_idUsuario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{consultaController.destroyAndView}" value="#{bundle.ViewConsultaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewConsultaEditLink}"/>
+                <br />
+                <h:commandLink action="#{consultaController.prepareCreate}" value="#{bundle.ViewConsultaCreateLink}" />
+                <br />
+                <h:commandLink action="#{consultaController.prepareList}" value="#{bundle.ViewConsultaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewConsultaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

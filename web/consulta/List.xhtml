@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListConsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListConsultaEmpty}" rendered="#{consultaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{consultaController.items.rowCount > 0}">
+                    <h:outputText value="#{consultaController.pagination.pageFirstItem + 1}..#{consultaController.pagination.pageLastItem + 1}/#{consultaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{consultaController.previous}" value="#{bundle.Previous} #{consultaController.pagination.pageSize}" rendered="#{consultaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{consultaController.next}" value="#{bundle.Next} #{consultaController.pagination.pageSize}" rendered="#{consultaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{consultaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaTitle_idConsulta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idConsulta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaTitle_idTratamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTratamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaTitle_data}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.data}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaTitle_hora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hora}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaTitle_diagnostico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diagnostico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaTitle_observacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaTitle_idStatus}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idStatus}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaTitle_idPaciente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPaciente}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaTitle_idUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{consultaController.prepareView}" value="#{bundle.ListConsultaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{consultaController.prepareEdit}" value="#{bundle.ListConsultaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{consultaController.destroy}" value="#{bundle.ListConsultaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{consultaController.prepareCreate}" value="#{bundle.ListConsultaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListConsultaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

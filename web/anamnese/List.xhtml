@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAnamneseTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAnamneseEmpty}" rendered="#{anamneseController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{anamneseController.items.rowCount > 0}">
+                    <h:outputText value="#{anamneseController.pagination.pageFirstItem + 1}..#{anamneseController.pagination.pageLastItem + 1}/#{anamneseController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{anamneseController.previous}" value="#{bundle.Previous} #{anamneseController.pagination.pageSize}" rendered="#{anamneseController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{anamneseController.next}" value="#{bundle.Next} #{anamneseController.pagination.pageSize}" rendered="#{anamneseController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{anamneseController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnamneseTitle_idAnamnese}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAnamnese}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnamneseTitle_gengiva}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.gengiva}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnamneseTitle_dentesSensiveis}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dentesSensiveis}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnamneseTitle_retencaoalimentos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.retencaoalimentos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnamneseTitle_alergiaMedicamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.alergiaMedicamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnamneseTitle_alergiaAlimento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.alergiaAlimento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnamneseTitle_mordeLapis}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mordeLapis}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnamneseTitle_roiUnhas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.roiUnhas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnamneseTitle_outrosVicios}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.outrosVicios}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnamneseTitle_gravida}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.gravida}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnamneseTitle_doenca}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.doenca}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnamneseTitle_observacoes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacoes}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{anamneseController.prepareView}" value="#{bundle.ListAnamneseViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{anamneseController.prepareEdit}" value="#{bundle.ListAnamneseEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{anamneseController.destroy}" value="#{bundle.ListAnamneseDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{anamneseController.prepareCreate}" value="#{bundle.ListAnamneseCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAnamneseIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

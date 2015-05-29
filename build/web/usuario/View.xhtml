@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h1 class='page-header'>
+                    #{bundle.usuario}
+                </h1>
+                <dl>                    
+                    <dt>#{bundle.ViewUsuarioLabel_idUsuario}</dt>
+                    <dd>#{usuarioController.selected.idUsuario}"</dd>                    
+                    <dt>#{bundle.ViewUsuarioLabel_nome}"</dt>
+                    <dd>#{usuarioController.selected.nome}"</dd>
+                    <dt>#{bundle.ViewUsuarioLabel_login}"</dt>
+                    <dd>#{usuarioController.selected.login}"</dd>
+                    <dt>#{bundle.ViewUsuarioLabel_email}</dt>
+                    <dd>#{usuarioController.selected.email}</dd>
+                    <dt>#{bundle.ViewUsuarioLabel_senha}</dt>
+                    <dd>#{usuarioController.selected.senha}</dd>
+                    <dt>#{bundle.ViewUsuarioLabel_idCargo}</dt>
+                    <dd>#{usuarioController.selected.idCargo}</dd>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
