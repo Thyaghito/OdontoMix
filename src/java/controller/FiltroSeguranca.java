@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Neto
+ * @author Thyago
  */
 public class FiltroSeguranca implements Filter {
 

@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
+
 /**
  *
  * @author Neto
@@ -37,7 +38,7 @@ public class LoginController implements Serializable {
             userSystem = this.controller.getUser(this.current.getNome()); 
             if(userSystem!=null){
                 if(current.getSenha().equals(userSystem.getSenha())){                   
-                    sessao.setMaxInactiveInterval(1800000);
+                    sessao.setMaxInactiveInterval(100000); //1800000
                     sessao.setAttribute("sys_user", userSystem);                     
                     ec.redirect("consulta/List.xhtml");
                 }else{

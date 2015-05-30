@@ -14,11 +14,14 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateAnamneseLabel_idAnamnese}" for="idAnamnese" />
-                    <h:inputText id="idAnamnese" value="#{anamneseController.selected.idAnamnese}" title="#{bundle.CreateAnamneseTitle_idAnamnese}" required="true" requiredMessage="#{bundle.CreateAnamneseRequiredMessage_idAnamnese}"/>
+                <div class="form-group">
                     <h:outputLabel value="#{bundle.CreateAnamneseLabel_gengiva}" for="gengiva" />
-                    <h:inputText id="gengiva" value="#{anamneseController.selected.gengiva}" title="#{bundle.CreateAnamneseTitle_gengiva}" />
+                    <h:selectOneMenu id="gengiva" class="form-control" value="#{anamneseController.selected.gengiva}" title="#{bundle.CreateAnamneseTitle_gengiva}">
+                        <f:selectItem itemValue="" itemLabel="Selecione" />
+                        <f:selectItem itemValue="S" itemLabel="Sim" />
+                        <f:selectItem itemValue="N" itemLabel="Não" />
+                    </h:selectOneMenu>                    
+                </div>    
                     <h:outputLabel value="#{bundle.CreateAnamneseLabel_dentesSensiveis}" for="dentesSensiveis" />
                     <h:inputText id="dentesSensiveis" value="#{anamneseController.selected.dentesSensiveis}" title="#{bundle.CreateAnamneseTitle_dentesSensiveis}" />
                     <h:outputLabel value="#{bundle.CreateAnamneseLabel_retencaoalimentos}" for="retencaoalimentos" />

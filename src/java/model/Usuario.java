@@ -7,6 +7,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -135,14 +136,14 @@ public class Usuario implements Serializable {
         this.idCargo = idCargo;
     }
 
-    @XmlTransient
-    public Collection<Consulta> getConsultaCollection() {
-        return consultaCollection;
-    }
-
-    public void setConsultaCollection(Collection<Consulta> consultaCollection) {
-        this.consultaCollection = consultaCollection;
-    }
+//    @XmlTransient
+//    public Collection<Consulta> getConsultaCollection() {
+//        return consultaCollection;
+//    }
+//
+//    public void setConsultaCollection(Collection<Consulta> consultaCollection) {
+//        this.consultaCollection = consultaCollection;
+//    }
 
     @Override
     public int hashCode() {
@@ -167,6 +168,10 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "model.Usuario[ idUsuario=" + idUsuario + " ]";
+    }
+
+    public void setCreated(Date date) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
