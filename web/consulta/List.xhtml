@@ -11,33 +11,33 @@
         </ui:define>
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                <h1 class="page-header">
+                    #{bundle.ListConsultaTitle}
+                    <h:commandLink action="#{consultaController.prepareCreate}" class="btn btn-primary btn-xs">#{bundle.AddNew}</h:commandLink>
+                </h1>
+                <h:panelGroup rendered="#{pacienteController.items.rowCount == 0}">
+                    <div class="alert alert-warning">
+                        <h:outputText escape="false" value="#{bundle.ListPacienteEmpty}"/>
+                    </div>                    
                 </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListConsultaEmpty}" rendered="#{consultaController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{consultaController.items.rowCount > 0}">
-                    <h:outputText value="#{consultaController.pagination.pageFirstItem + 1}..#{consultaController.pagination.pageLastItem + 1}/#{consultaController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{consultaController.previous}" value="#{bundle.Previous} #{consultaController.pagination.pageSize}" rendered="#{consultaController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{consultaController.next}" value="#{bundle.Next} #{consultaController.pagination.pageSize}" rendered="#{consultaController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{consultaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
+                 <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>                
+                <h:panelGroup rendered="#{pacienteController.items.rowCount > 0}">
+                    <div class='panel panel-default'>
+                        <h:dataTable value="#{pacienteController.items}" var="item" class="table table-striped table-bordered list-records" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">                    
+                            <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListConsultaTitle_idConsulta}"/>
                             </f:facet>
                             <h:outputText value="#{item.idConsulta}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListConsultaTitle_idTratamento}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idTratamento}"/>
-                        </h:column>
+                        </h:column>                        
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListConsultaTitle_data}"/>
                             </f:facet>
                             <h:outputText value="#{item.data}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </h:column>
                         <h:column>
@@ -45,38 +45,26 @@
                                 <h:outputText value="#{bundle.ListConsultaTitle_hora}"/>
                             </f:facet>
                             <h:outputText value="#{item.hora}">
-                                <f:convertDateTime pattern="HH:mm:ss" />
+                                <f:convertDateTime pattern="HH:mm" />
                             </h:outputText>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListConsultaTitle_diagnostico}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.diagnostico}"/>
-                        </h:column>
+                        </h:column>                        
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListConsultaTitle_observacao}"/>
                             </f:facet>
                             <h:outputText value="#{item.observacao}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListConsultaTitle_idStatus}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idStatus}"/>
-                        </h:column>
+                        </h:column>                        
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListConsultaTitle_idPaciente}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idPaciente}"/>
+                            <h:outputText value="#{item.idPaciente.nome}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListConsultaTitle_idUsuario}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idUsuario}"/>
+                            <h:outputText value="#{item.idUsuario.nome}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -88,13 +76,20 @@
                             <h:outputText value=" "/>
                             <h:commandLink action="#{consultaController.destroy}" value="#{bundle.ListConsultaDestroyLink}"/>
                         </h:column>
-                    </h:dataTable>
-                </h:panelGroup>
-                <br />
-                <h:commandLink action="#{consultaController.prepareCreate}" value="#{bundle.ListConsultaCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListConsultaIndexLink}"/>
+                     </h:dataTable>
+                    </div>
+                    <center>
+                        <ul class='pagination'>
+                            <li>
+                                <h:commandLink action="#{consultaController.previous}" rendered="#{consultaController.pagination.hasPreviousPage}"><span class='glyphicon glyphicon-chevron-left'></span></h:commandLink>
+                            </li>
+                            <li><h:outputText value="Página #{consultaController.pagination.page} de #{consultaController.pagination.lastPage}"/></li>
+                            <li>
+                                <h:commandLink action="#{consultaController.next}" rendered="#{consultaController.pagination.hasNextPage}"><span class='glyphicon glyphicon-chevron-right'></span></h:commandLink>
+                            </li>
+                        </ul>
+                    </center>
+                </h:panelGroup>               
             </h:form>
         </ui:define>
     </ui:composition>

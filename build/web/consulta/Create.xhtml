@@ -14,35 +14,36 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
-                <h:panelGrid columns="2">
+                <h:panelGroup class="form-group" layout="block" rendered="#{consultaController.selected.idConsulta!=null}">
                     <h:outputLabel value="#{bundle.CreateConsultaLabel_idConsulta}" for="idConsulta" />
-                    <h:inputText id="idConsulta" value="#{consultaController.selected.idConsulta}" title="#{bundle.CreateConsultaTitle_idConsulta}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_idConsulta}"/>
-                    <h:outputLabel value="#{bundle.CreateConsultaLabel_idTratamento}" for="idTratamento" />
-                    <h:inputText id="idTratamento" value="#{consultaController.selected.idTratamento}" title="#{bundle.CreateConsultaTitle_idTratamento}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_idTratamento}"/>
+                    #{consultaController.selected.idConsulta}                    
+                </h:panelGroup>                
+                <div class="form-group">
                     <h:outputLabel value="#{bundle.CreateConsultaLabel_data}" for="data" />
-                    <h:inputText id="data" value="#{consultaController.selected.data}" title="#{bundle.CreateConsultaTitle_data}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_data}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    <h:inputText id="data" class="form-control input-date" value="#{consultaController.selected.data}" title="#{bundle.CreateConsultaTitle_data}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_data}">>
+                        <f:convertDateTime pattern="d/M/yyyy" />
                     </h:inputText>
-                    <h:outputLabel value="#{bundle.CreateConsultaLabel_hora}" for="hora" />
-                    <h:inputText id="hora" value="#{consultaController.selected.hora}" title="#{bundle.CreateConsultaTitle_hora}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_hora}">
-                        <f:convertDateTime pattern="HH:mm:ss" />
-                    </h:inputText>
-                    <h:outputLabel value="#{bundle.CreateConsultaLabel_diagnostico}" for="diagnostico" />
-                    <h:inputText id="diagnostico" value="#{consultaController.selected.diagnostico}" title="#{bundle.CreateConsultaTitle_diagnostico}" />
-                    <h:outputLabel value="#{bundle.CreateConsultaLabel_observacao}" for="observacao" />
-                    <h:inputText id="observacao" value="#{consultaController.selected.observacao}" title="#{bundle.CreateConsultaTitle_observacao}" />
-                    <h:outputLabel value="#{bundle.CreateConsultaLabel_idStatus}" for="idStatus" />
-                    <h:selectOneMenu id="idStatus" value="#{consultaController.selected.idStatus}" title="#{bundle.CreateConsultaTitle_idStatus}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_idStatus}">
-                        <f:selectItems value="#{statusController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.CreateConsultaLabel_idPaciente}" for="idPaciente" />
-                    <h:selectOneMenu id="idPaciente" value="#{consultaController.selected.idPaciente}" title="#{bundle.CreateConsultaTitle_idPaciente}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_idPaciente}">
-                        <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.CreateConsultaLabel_idUsuario}" for="idUsuario" />
-                    <h:selectOneMenu id="idUsuario" value="#{consultaController.selected.idUsuario}" title="#{bundle.CreateConsultaTitle_idUsuario}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_idUsuario}">
-                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
+                </div>                         
+                <h:outputLabel value="#{bundle.CreateConsultaLabel_hora}" for="hora" />
+                <h:inputText id="hora" value="#{consultaController.selected.hora}" title="#{bundle.CreateConsultaTitle_hora}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_hora}">
+                    <f:convertDateTime pattern="HH:mm:ss" />
+                </h:inputText>
+                <h:outputLabel value="#{bundle.CreateConsultaLabel_diagnostico}" for="diagnostico" />
+                <h:inputText id="diagnostico" value="#{consultaController.selected.diagnostico}" title="#{bundle.CreateConsultaTitle_diagnostico}" />
+                <h:outputLabel value="#{bundle.CreateConsultaLabel_observacao}" for="observacao" />
+                <h:inputText id="observacao" value="#{consultaController.selected.observacao}" title="#{bundle.CreateConsultaTitle_observacao}" />
+                <h:outputLabel value="#{bundle.CreateConsultaLabel_idStatus}" for="idStatus" />
+                <h:selectOneMenu id="idStatus" value="#{consultaController.selected.idStatus}" title="#{bundle.CreateConsultaTitle_idStatus}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_idStatus}">
+                    <f:selectItems value="#{statusController.itemsAvailableSelectOne}"/>
+                </h:selectOneMenu>
+                <h:outputLabel value="#{bundle.CreateConsultaLabel_idPaciente}" for="idPaciente" />
+                <h:selectOneMenu id="idPaciente" value="#{consultaController.selected.idPaciente}" title="#{bundle.CreateConsultaTitle_idPaciente}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_idPaciente}">
+                    <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"/>
+                </h:selectOneMenu>
+                <h:outputLabel value="#{bundle.CreateConsultaLabel_idUsuario}" for="idUsuario" />
+                <h:selectOneMenu id="idUsuario" value="#{consultaController.selected.idUsuario}" title="#{bundle.CreateConsultaTitle_idUsuario}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_idUsuario}">
+                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{consultaController.create}" value="#{bundle.CreateConsultaSaveLink}" />

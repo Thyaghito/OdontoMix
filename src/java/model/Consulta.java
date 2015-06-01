@@ -37,8 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Consulta.findAll", query = "SELECT c FROM Consulta c"),
-    @NamedQuery(name = "Consulta.findByIdConsulta", query = "SELECT c FROM Consulta c WHERE c.idConsulta = :idConsulta"),
-    @NamedQuery(name = "Consulta.findByIdTratamento", query = "SELECT c FROM Consulta c WHERE c.idTratamento = :idTratamento"),
+    @NamedQuery(name = "Consulta.findByIdConsulta", query = "SELECT c FROM Consulta c WHERE c.idConsulta = :idConsulta"),   
     @NamedQuery(name = "Consulta.findByData", query = "SELECT c FROM Consulta c WHERE c.data = :data"),
     @NamedQuery(name = "Consulta.findByHora", query = "SELECT c FROM Consulta c WHERE c.hora = :hora"),
     @NamedQuery(name = "Consulta.findByDiagnostico", query = "SELECT c FROM Consulta c WHERE c.diagnostico = :diagnostico"),
@@ -49,11 +48,7 @@ public class Consulta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_consulta")
-    private Integer idConsulta;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "id_tratamento")
-    private int idTratamento;
+    private Integer idConsulta;   
     @Basic(optional = false)
     @NotNull
     @Column(name = "data")
@@ -90,8 +85,7 @@ public class Consulta implements Serializable {
     }
 
     public Consulta(Integer idConsulta, int idTratamento, Date data, Date hora) {
-        this.idConsulta = idConsulta;
-        this.idTratamento = idTratamento;
+        this.idConsulta = idConsulta;        
         this.data = data;
         this.hora = hora;
     }
@@ -102,14 +96,6 @@ public class Consulta implements Serializable {
 
     public void setIdConsulta(Integer idConsulta) {
         this.idConsulta = idConsulta;
-    }
-
-    public int getIdTratamento() {
-        return idTratamento;
-    }
-
-    public void setIdTratamento(int idTratamento) {
-        this.idTratamento = idTratamento;
     }
 
     public Date getData() {

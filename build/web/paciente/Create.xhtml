@@ -52,13 +52,13 @@
                 </div>
                 <div class="form-group">
                     <h:outputLabel value="#{bundle.CreatePacienteLabel_dataNascimento}" for="dataNascimento" />
-                    <h:inputText id="dataNascimento" class="form-control" value="#{pacienteController.selected.dataNascimento}" title="#{bundle.CreatePacienteTitle_dataNascimento}" >
-                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    <h:inputText id="dataNascimento" class="form-control input-date" value="#{pacienteController.selected.dataNascimento}" title="#{bundle.CreatePacienteTitle_dataNascimento}" required="true">
+                        <f:convertDateTime pattern="d/M/yyyy" />
                     </h:inputText>
-                </div>
+                </div>                
                 <div class="form-group">
                     <h:outputLabel value="#{bundle.CreatePacienteLabel_observacoes}" for="observacoes" />
-                    <h:inputText id="observacoes" class="form-control" value="#{pacienteController.selected.observacoes}" title="#{bundle.CreatePacienteTitle_observacoes}" />
+                    <h:inputTextarea id="observacoes" class="form-control" value="#{pacienteController.selected.observacoes}" title="#{bundle.CreatePacienteTitle_observacoes}" />
                 </div>
                 <div class="form-group">
                     <h:outputLabel value="#{bundle.CreatePacienteLabel_idAnamnese}" for="idAnamnese" />
