@@ -14,45 +14,33 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewAnamneseLabel_idAnamnese}"/>
-                    <h:outputText value="#{anamneseController.selected.idAnamnese}" title="#{bundle.ViewAnamneseTitle_idAnamnese}"/>
-                    <h:outputText value="#{bundle.ViewAnamneseLabel_gengiva}"/>
-                    <h:outputText value="#{anamneseController.selected.gengiva}" title="#{bundle.ViewAnamneseTitle_gengiva}"/>
-                    <h:outputText value="#{bundle.ViewAnamneseLabel_dentesSensiveis}"/>
-                    <h:outputText value="#{anamneseController.selected.dentesSensiveis}" title="#{bundle.ViewAnamneseTitle_dentesSensiveis}"/>
-                    <h:outputText value="#{bundle.ViewAnamneseLabel_retencaoalimentos}"/>
-                    <h:outputText value="#{anamneseController.selected.retencaoalimentos}" title="#{bundle.ViewAnamneseTitle_retencaoalimentos}"/>
-                    <h:outputText value="#{bundle.ViewAnamneseLabel_alergiaMedicamento}"/>
-                    <h:outputText value="#{anamneseController.selected.alergiaMedicamento}" title="#{bundle.ViewAnamneseTitle_alergiaMedicamento}"/>
-                    <h:outputText value="#{bundle.ViewAnamneseLabel_alergiaAlimento}"/>
-                    <h:outputText value="#{anamneseController.selected.alergiaAlimento}" title="#{bundle.ViewAnamneseTitle_alergiaAlimento}"/>
-                    <h:outputText value="#{bundle.ViewAnamneseLabel_mordeLapis}"/>
-                    <h:outputText value="#{anamneseController.selected.mordeLapis}" title="#{bundle.ViewAnamneseTitle_mordeLapis}"/>
-                    <h:outputText value="#{bundle.ViewAnamneseLabel_roiUnhas}"/>
-                    <h:outputText value="#{anamneseController.selected.roiUnhas}" title="#{bundle.ViewAnamneseTitle_roiUnhas}"/>
-                    <h:outputText value="#{bundle.ViewAnamneseLabel_outrosVicios}"/>
-                    <h:outputText value="#{anamneseController.selected.outrosVicios}" title="#{bundle.ViewAnamneseTitle_outrosVicios}"/>
-                    <h:outputText value="#{bundle.ViewAnamneseLabel_gravida}"/>
-                    <h:outputText value="#{anamneseController.selected.gravida}" title="#{bundle.ViewAnamneseTitle_gravida}"/>
-                    <h:outputText value="#{bundle.ViewAnamneseLabel_doenca}"/>
-                    <h:outputText value="#{anamneseController.selected.doenca}" title="#{bundle.ViewAnamneseTitle_doenca}"/>
-                    <h:outputText value="#{bundle.ViewAnamneseLabel_observacoes}"/>
-                    <h:outputText value="#{anamneseController.selected.observacoes}" title="#{bundle.ViewAnamneseTitle_observacoes}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{anamneseController.destroyAndView}" value="#{bundle.ViewAnamneseDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewAnamneseEditLink}"/>
-                <br />
-                <h:commandLink action="#{anamneseController.prepareCreate}" value="#{bundle.ViewAnamneseCreateLink}" />
-                <br />
-                <h:commandLink action="#{anamneseController.prepareList}" value="#{bundle.ViewAnamneseShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewAnamneseIndexLink}"/>
-
+                <h1 class='page-header'>
+                    #{bundle.usuario}
+                </h1>
+                <dl>
+                    <dt>#{bundle.ViewAnamneseLabel_gengiva}</dt>
+                    <dd>#{anamneseController.selected.gengiva}</dd>
+                    <dt>#{bundle.ViewAnamneseLabel_dentesSensiveis}</dt>
+                    <dd>#{anamneseController.selected.dentesSensiveis}</dd>
+                    <dt>#{bundle.ViewAnamneseLabel_retencaoalimentos}</dt>
+                    <dd>#{anamneseController.selected.retencaoalimentos}</dd>
+                    <dt>#{bundle.ViewAnamneseLabel_alergiaMedicamento}</dt>
+                    <dd>#{anamneseController.selected.alergiaMedicamento}</dd>
+                    <dt>#{bundle.ViewAnamneseLabel_alergiaAlimento}</dt>
+                    <dd>#{anamneseController.selected.alergiaAlimento}</dd>
+                    <dt>#{bundle.ViewAnamneseLabel_mordeLapis}</dt>
+                    <dd>#{anamneseController.selected.mordeLapis}</dd>
+                    <dt>#{bundle.ViewAnamneseLabel_roiUnhas}</dt>
+                    <dd>#{anamneseController.selected.roiUnhas}</dd>
+                    <dt>#{bundle.ViewAnamneseLabel_outrosVicios}</dt>
+                    <dd>#{anamneseController.selected.outrosVicios}</dd>
+                    <dt>#{bundle.ViewAnamneseLabel_gravida}</dt>
+                    <dd>#{anamneseController.selected.gravida}</dd>
+                    <dt>#{bundle.ViewAnamneseLabel_doenca}</dt>
+                    <dd>#{anamneseController.selected.doenca}</dd>
+                    <dt>#{bundle.ViewAnamneseLabel_observacoes}</dt>
+                    <dd>#{anamneseController.selected.observacoes}</dd>
+                </dl>
             </h:form>
         </ui:define>
     </ui:composition>

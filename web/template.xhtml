@@ -48,7 +48,7 @@
         <div class="main">
             <div class="main-menu col-md-2"> 
                 <h:link outcome="/convenio/List" class="list-group-item"><span class='glyphicon glyphicon-film'></span> #{bundle.convenio}</h:link>
-                <h:link outcome="/procedimento/List" class="list-group-item"><span class='glyphicon glyphicon-star'></span> #{bundle.procedimento}</h:link>
+                <h:link outcome="/procedimento/List" class="list-group-item" rendered="#{loginController.userSystem.idCargo.idCargo == 2}"><span class='glyphicon glyphicon-star'></span> #{bundle.procedimento}</h:link>
                 <h:link outcome="/consulta/List" class="list-group-item"><span class='glyphicon glyphicon-tag'></span> #{bundle.consulta}</h:link>
                 <h:link outcome="/paciente/List" class="list-group-item"><span class='glyphicon glyphicon-star-empty'></span> #{bundle.paciente}</h:link>
                 <h:link outcome="/usuario/List" class="list-group-item" rendered="#{loginController.userSystem.idCargo.idCargo == 2}" ><span class='glyphicon glyphicon-user'></span> #{bundle.usuario}</h:link>   

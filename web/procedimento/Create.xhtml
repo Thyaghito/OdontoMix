@@ -13,27 +13,35 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
+            <h:panelGroup rendered="#{loginController.userSystem.idCargo.idCargo!= 2}">
+                <div class="alert alert-danger">
+                    <h:outputText escape="false" value="#{bundle.permissionMessage}"/>
+                </div>                    
+            </h:panelGroup>
+            <h:form rendered="#{loginController.userSystem.idCargo.idCargo==2}">
+                <h:panelGroup class="form-group" layout="block" rendered="#{usuarioController.selected.idUsuario!=null}">
                     <h:outputLabel value="#{bundle.CreateProcedimentoLabel_idProcedimento}" for="idProcedimento" />
-                    <h:inputText id="idProcedimento" value="#{procedimentoController.selected.idProcedimento}" title="#{bundle.CreateProcedimentoTitle_idProcedimento}" required="true" requiredMessage="#{bundle.CreateProcedimentoRequiredMessage_idProcedimento}"/>
+                    #{procedimentoController.selected.idProcedimento}                    
+                </h:panelGroup>
+                <div class="form-group">
                     <h:outputLabel value="#{bundle.CreateProcedimentoLabel_nome}" for="nome" />
-                    <h:inputText id="nome" value="#{procedimentoController.selected.nome}" title="#{bundle.CreateProcedimentoTitle_nome}" required="true" requiredMessage="#{bundle.CreateProcedimentoRequiredMessage_nome}"/>
+                    <h:inputText id="nome" class="form-control" value="#{procedimentoController.selected.nome}" title="#{bundle.CreateProcedimentoTitle_nome}" required="true" requiredMessage="#{bundle.CreateProcedimentoRequiredMessage_nome}"/>               
+                </div>
+                <div class="form-group">
                     <h:outputLabel value="#{bundle.CreateProcedimentoLabel_observacoes}" for="observacoes" />
-                    <h:inputText id="observacoes" value="#{procedimentoController.selected.observacoes}" title="#{bundle.CreateProcedimentoTitle_observacoes}" />
-                    <h:outputLabel value="#{bundle.CreateProcedimentoLabel_idTipoProcedimento}" for="idTipoProcedimento" />
-                    <h:selectOneMenu id="idTipoProcedimento" value="#{procedimentoController.selected.idTipoProcedimento}" title="#{bundle.CreateProcedimentoTitle_idTipoProcedimento}" required="true" requiredMessage="#{bundle.CreateProcedimentoRequiredMessage_idTipoProcedimento}">
-                        <f:selectItems value="#{tipoProcedimentoController.itemsAvailableSelectOne}"/>
+                    <h:inputText id="observacoes" class="form-control" value="#{procedimentoController.selected.observacoes}" title="#{bundle.CreateProcedimentoTitle_observacoes}" />
+                </div>
+                <div class="form-group">
+                    <h:outputLabel value="#{bundle.tipoProcedimento}" for="TipoProcedimento" />
+                    <h:selectOneMenu id="TipoProcedimento" value="#{procedimentoController.selected.idTipoProcedimento}" title="#{bundle.CreateProcedimentoTitle_idTipoProcedimento}" required="true" requiredMessage="#{bundle.CreateProcedimentoRequiredMessage_idTipoProcedimento}">
+                        <f:selectItems value="#{tipoProcedimentoController.list}" var="tipoProcedimento" itemValue="#{tipoProcedimento.idTipoProcedimento}" itemLabel="#{tipoProcedimento.nome}"/>
                     </h:selectOneMenu>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{procedimentoController.create}" value="#{bundle.CreateProcedimentoSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{procedimentoController.prepareList}" value="#{bundle.CreateProcedimentoShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateProcedimentoIndexLink}"/>
+                </div>    
+                <div class="footer-form">                                    
+                    <h:commandLink class="btn btn-primary navbar-right btn-save" action="#{procedimentoController.create}" value="#{bundle.CreateProcedimentoSaveLink}" />                
+                    <h:commandLink class="btn btn-primary navbar-right btn-save" action="#{procedimentoController.prepareList}" value="#{bundle.CreateProcedimentoShowAllLink}" immediate="true"/>
+                    <a class="btn btn-default navbar-right btn-cancel" href="List.xhtml">#{bundle.cancel}</a>
+                </div> 
             </h:form>
         </ui:define>
     </ui:composition>

@@ -5,6 +5,7 @@ import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -23,6 +24,7 @@ public class TipoProcedimentoController implements Serializable {
 
     private TipoProcedimento current;
     private DataModel items = null;
+    private List<TipoProcedimento> list = null;
     @EJB
     private controller.TipoProcedimentoFacade ejbFacade;
     private PaginationHelper pagination;
@@ -157,6 +159,11 @@ public class TipoProcedimentoController implements Serializable {
             items = getPagination().createPageDataModel();
         }
         return items;
+    }
+    
+    public List getList() {
+        list = ejbFacade.findAll();
+        return list;
     }
 
     private void recreateModel() {

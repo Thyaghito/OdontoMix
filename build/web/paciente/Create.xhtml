@@ -67,6 +67,12 @@
                     </h:selectOneMenu>
                 </div>
                 <div class="form-group">
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_Estado}" for="idEStado" />
+                    <h:selectOneMenu id="idEstado" value="#{estadoController.selected.idEstado}" title="#{bundle.CreatePacienteTitle_idEstado}">
+                        <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </div>
+                <div class="form-group">
                     <h:outputLabel value="#{bundle.CreatePacienteLabel_idCidade}" for="idCidade" />
                     <h:selectOneMenu id="idCidade" value="#{pacienteController.selected.idCidade}" title="#{bundle.CreatePacienteTitle_idCidade}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_idCidade}">
                         <f:selectItems value="#{cidadeController.itemsAvailableSelectOne}"/>

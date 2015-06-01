@@ -20,37 +20,62 @@
                         <f:selectItem itemValue="" itemLabel="Selecione" />
                         <f:selectItem itemValue="S" itemLabel="Sim" />
                         <f:selectItem itemValue="N" itemLabel="Não" />
-                    </h:selectOneMenu>                    
-                </div>    
+                    </h:selectOneMenu>   
                     <h:outputLabel value="#{bundle.CreateAnamneseLabel_dentesSensiveis}" for="dentesSensiveis" />
-                    <h:inputText id="dentesSensiveis" value="#{anamneseController.selected.dentesSensiveis}" title="#{bundle.CreateAnamneseTitle_dentesSensiveis}" />
+                    <h:selectOneMenu id="dentesSensiveis" class="form-control" value="#{anamneseController.selected.dentesSensiveis}" title="#{bundle.CreateAnamneseTitle_dentesSensiveis}">
+                        <f:selectItem itemValue="" itemLabel="Selecione" />
+                        <f:selectItem itemValue="S" itemLabel="Sim" />
+                        <f:selectItem itemValue="N" itemLabel="Não" />
+                    </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.CreateAnamneseLabel_retencaoalimentos}" for="retencaoalimentos" />
-                    <h:inputText id="retencaoalimentos" value="#{anamneseController.selected.retencaoalimentos}" title="#{bundle.CreateAnamneseTitle_retencaoalimentos}" />
+                    <h:selectOneMenu id="retencaoalimentos" class="form-control" value="#{anamneseController.selected.retencaoalimentos}" title="#{bundle.CreateAnamneseTitle_retencaoalimentos}">
+                        <f:selectItem itemValue="" itemLabel="Selecione" />
+                        <f:selectItem itemValue="S" itemLabel="Sim" />
+                        <f:selectItem itemValue="N" itemLabel="Não" />
+                    </h:selectOneMenu>
+                </div>       
+                <div class="form-group">
                     <h:outputLabel value="#{bundle.CreateAnamneseLabel_alergiaMedicamento}" for="alergiaMedicamento" />
-                    <h:inputText id="alergiaMedicamento" value="#{anamneseController.selected.alergiaMedicamento}" title="#{bundle.CreateAnamneseTitle_alergiaMedicamento}" />
+                    <h:inputText id="alergiaMedicamento" class="form-control" value="#{anamneseController.selected.alergiaMedicamento}" title="#{bundle.CreateAnamneseTitle_alergiaMedicamento}" />
+                </div>
+                <div class="form-group">    
                     <h:outputLabel value="#{bundle.CreateAnamneseLabel_alergiaAlimento}" for="alergiaAlimento" />
-                    <h:inputText id="alergiaAlimento" value="#{anamneseController.selected.alergiaAlimento}" title="#{bundle.CreateAnamneseTitle_alergiaAlimento}" />
+                    <h:inputText id="alergiaAlimento" class="form-control" value="#{anamneseController.selected.alergiaAlimento}" title="#{bundle.CreateAnamneseTitle_alergiaAlimento}" />
+                </div>
+                <div class="form-group">  
                     <h:outputLabel value="#{bundle.CreateAnamneseLabel_mordeLapis}" for="mordeLapis" />
-                    <h:inputText id="mordeLapis" value="#{anamneseController.selected.mordeLapis}" title="#{bundle.CreateAnamneseTitle_mordeLapis}" />
+                    <h:selectOneMenu id="mordeLapis" class="form-control" value="#{anamneseController.selected.mordeLapis}" title="#{bundle.CreateAnamneseTitle_mordeLapis}">
+                        <f:selectItem itemValue="" itemLabel="Selecione" />
+                        <f:selectItem itemValue="S" itemLabel="Sim" />
+                        <f:selectItem itemValue="N" itemLabel="Não" />
+                    </h:selectOneMenu>        
                     <h:outputLabel value="#{bundle.CreateAnamneseLabel_roiUnhas}" for="roiUnhas" />
-                    <h:inputText id="roiUnhas" value="#{anamneseController.selected.roiUnhas}" title="#{bundle.CreateAnamneseTitle_roiUnhas}" />
+                    <h:selectOneMenu id="roiUnhas" class="form-control" value="#{anamneseController.selected.roiUnhas}" title="#{bundle.CreateAnamneseTitle_roiUnhas}">
+                        <f:selectItem itemValue="" itemLabel="Selecione" />
+                        <f:selectItem itemValue="S" itemLabel="Sim" />
+                        <f:selectItem itemValue="N" itemLabel="Não" />
+                    </h:selectOneMenu>                      
+                </div>    
+                <div class="form-group">
                     <h:outputLabel value="#{bundle.CreateAnamneseLabel_outrosVicios}" for="outrosVicios" />
-                    <h:inputText id="outrosVicios" value="#{anamneseController.selected.outrosVicios}" title="#{bundle.CreateAnamneseTitle_outrosVicios}" />
+                    <h:inputText id="outrosVicios" class="form-control" value="#{anamneseController.selected.outrosVicios}" title="#{bundle.CreateAnamneseTitle_outrosVicios}" />
+                </div>
+                <div class="form-group">
                     <h:outputLabel value="#{bundle.CreateAnamneseLabel_gravida}" for="gravida" />
-                    <h:inputText id="gravida" value="#{anamneseController.selected.gravida}" title="#{bundle.CreateAnamneseTitle_gravida}" />
+                    <h:inputText id="gravida" class="form-control" value="#{anamneseController.selected.gravida}" title="#{bundle.CreateAnamneseTitle_gravida}" />
+                </div>
+                <div class="form-group">
                     <h:outputLabel value="#{bundle.CreateAnamneseLabel_doenca}" for="doenca" />
-                    <h:inputText id="doenca" value="#{anamneseController.selected.doenca}" title="#{bundle.CreateAnamneseTitle_doenca}" />
+                    <h:inputText id="doenca" class="form-control" value="#{anamneseController.selected.doenca}" title="#{bundle.CreateAnamneseTitle_doenca}" />
+                </div>
+                <div class="form-group">
                     <h:outputLabel value="#{bundle.CreateAnamneseLabel_observacoes}" for="observacoes" />
-                    <h:inputText id="observacoes" value="#{anamneseController.selected.observacoes}" title="#{bundle.CreateAnamneseTitle_observacoes}" />
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{anamneseController.create}" value="#{bundle.CreateAnamneseSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{anamneseController.prepareList}" value="#{bundle.CreateAnamneseShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateAnamneseIndexLink}"/>
+                    <h:inputText id="observacoes" class="form-control" value="#{anamneseController.selected.observacoes}" title="#{bundle.CreateAnamneseTitle_observacoes}" />
+                </div>
+                <div class="footer-form">
+                    <h:commandLink class="btn btn-primary navbar-right btn-save" action="#{anamneseController.create}" value="#{bundle.CreateAnamneseSaveLink}" />                 
+                    <a class="btn btn-default navbar-right btn-cancel" href="List.xhtml">#{bundle.cancel}</a>
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>

@@ -39,7 +39,7 @@
                     <h:outputLabel value="#{bundle.CreateUsuarioLabel_senha}" for="senha" />
                     <h:inputSecret id="senha" class="form-control" value="#{usuarioController.selected.senha}" title="#{bundle.CreateUsuarioTitle_senha}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_senha}"/>
                 </div>                
-                <div class="form-group">
+                <div class="form-group" rendered="#{loginController.userSystem.idCargo.idCargo==2}">
                     <h:outputLabel value="#{bundle.CreateUsuarioLabel_idCargo}" for="idCargo" />
                     <h:selectOneMenu id="idCargo" value="#{usuarioController.selected.idCargo}" title="#{bundle.CreateUsuarioTitle_idCargo}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_idCargo}">
                         <f:selectItems value="#{cargoController.itemsAvailableSelectOne}"/>
